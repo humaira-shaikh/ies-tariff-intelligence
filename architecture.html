@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IES Architecture</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', sans-serif; background:#0a0e1a; color:#e2e8f0; padding:40px; }
+
+h1 { text-align:center; font-size:28px; color:#fff; margin-bottom:6px; }
+.sub { text-align:center; font-size:13px; color:#8b949e; margin-bottom:40px; }
+
+/* ── DIAGRAM CONTAINER ── */
+.page { width:1200px; margin:0 auto; }
+
+/* ── SECTION TITLE ── */
+.sec { font-size:11px; font-weight:700; letter-spacing:2px; color:#484f58; text-transform:uppercase; margin-bottom:16px; }
+
+/* ── BOX ── */
+.box {
+  border-radius:10px; padding:16px 20px; text-align:center;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.box .name  { font-size:13px; font-weight:700; }
+.box .desc  { font-size:10px; margin-top:4px; opacity:0.7; }
+.box .port  { font-size:10px; margin-top:3px; font-family:monospace; }
+
+/* Colors */
+.c-blue   { background:#0d1f38; border:1.5px solid #1f6feb; }
+.c-blue   .name { color:#58a6ff; }
+.c-green  { background:#0d2f0d; border:1.5px solid #238636; }
+.c-green  .name { color:#3fb950; }
+.c-purple { background:#1a0d38; border:1.5px solid #6e40c9; }
+.c-purple .name { color:#bc8cff; }
+.c-orange { background:#2a1500; border:1.5px solid #d04f00; }
+.c-orange .name { color:#f0883e; }
+.c-gray   { background:#161b22; border:1.5px solid #30363d; }
+.c-gray   .name { color:#c9d1d9; }
+.c-teal   { background:#0d2a2a; border:1.5px solid #0d7377; }
+.c-teal   .name { color:#14a3a3; }
+
+/* ── ARROW ── */
+.arr { display:flex; align-items:center; justify-content:center; flex-direction:column; min-width:60px; }
+.arr .line { width:100%; height:1px; background:#30363d; position:relative; }
+.arr .line.r::after  { content:'▶'; position:absolute; right:-7px; top:-8px; font-size:12px; color:#30363d; }
+.arr .line.l::before { content:'◀'; position:absolute; left:-7px;  top:-8px; font-size:12px; color:#30363d; }
+.arr .line.both::after  { content:'▶'; position:absolute; right:-7px; top:-8px; font-size:12px; color:#30363d; }
+.arr .line.both::before { content:'◀'; position:absolute; left:-7px;  top:-8px; font-size:12px; color:#30363d; }
+.arr .lbl { font-size:9px; color:#484f58; margin-top:4px; text-align:center; }
+.arr-v { display:flex; flex-direction:column; align-items:center; }
+.arr-v .vline { width:1px; height:40px; background:#30363d; position:relative; }
+.arr-v .vline.d::after { content:'▼'; position:absolute; bottom:-10px; left:-5px; font-size:12px; color:#30363d; }
+.arr-v .vline.u::before{ content:'▲'; position:absolute; top:-10px; left:-5px; font-size:12px; color:#30363d; }
+.arr-v .lbl { font-size:9px; color:#484f58; margin:3px 0; }
+
+/* ── ROW / COL ── */
+.row { display:flex; align-items:center; }
+.col { display:flex; flex-direction:column; align-items:center; }
+.gap10 { gap:10px; } .gap16 { gap:16px; } .gap24 { gap:24px; } .gap32 { gap:32px; }
+
+/* ── CARD ── */
+.card { background:#0d1117; border:1px solid #1e2d3d; border-radius:12px; padding:30px; margin-bottom:30px; }
+
+/* ── BADGE ── */
+.badge { display:inline-block; border-radius:20px; padding:3px 10px; font-size:10px; font-weight:600; }
+.badge-green  { background:#0d2f0d; color:#3fb950; border:1px solid #238636; }
+.badge-blue   { background:#0d1f38; color:#58a6ff; border:1px solid #1f6feb; }
+.badge-purple { background:#1a0d38; color:#bc8cff; border:1px solid #6e40c9; }
+.badge-orange { background:#2a1500; color:#f0883e; border:1px solid #d04f00; }
+
+/* ── STEP FLOW ── */
+.step-row { display:flex; align-items:stretch; margin:20px 0; }
+.step-item { flex:1; background:#161b22; border-radius:8px; padding:16px; border-top:3px solid; }
+.step-item h4 { font-size:13px; font-weight:700; margin-bottom:6px; }
+.step-item p  { font-size:11px; color:#8b949e; line-height:1.7; }
+.step-sep { display:flex; align-items:center; padding:0 8px; color:#30363d; font-size:18px; }
+
+/* ── USE CASE BOX ── */
+.uc-row { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:16px; margin-top:16px; }
+.uc-item { border-radius:8px; padding:16px; }
+.uc-item h4 { font-size:13px; font-weight:700; margin-bottom:8px; }
+.uc-item ul { list-style:none; }
+.uc-item li { font-size:11px; color:#8b949e; padding:2px 0 2px 14px; position:relative; line-height:1.6; }
+.uc-item li::before { content:'·'; position:absolute; left:4px; color:#484f58; }
+
+/* ── DIVIDER ── */
+hr { border:none; border-top:1px solid #1e2d3d; margin:24px 0; }
+
+/* ── TITLE BANNER ── */
+.banner {
+  background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%);
+  border:1px solid #1e2d3d; border-radius:12px;
+  padding:30px 40px; margin-bottom:30px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.banner h1 { font-size:26px; color:#fff; text-align:left; margin-bottom:4px; }
+.banner p  { font-size:13px; color:#8b949e; }
+.banner-right { display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ── TITLE ── -->
+<div class="banner">
+  <div>
+    <div style="font-size:10px;color:#58a6ff;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">IES Bootcamp 2026 · REC Limited, Gurugram</div>
+    <h1>India Energy Stack — Data Exchange</h1>
+    <p>End-to-End Architecture · Beckn DDM Protocol · Tariff Intelligence + Regulatory Filing</p>
+  </div>
+  <div class="banner-right">
+    <span class="badge badge-green">4/4 Use Cases Complete</span>
+    <span class="badge badge-blue">nfh.global/testnet-deg</span>
+    <span class="badge badge-purple">Ed25519 Signed</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- DIAGRAM 1: SYSTEM ARCHITECTURE                          -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="sec">1 · System Architecture</div>
+
+  <!-- TOP: DeDi -->
+  <div class="col" style="align-items:center; margin-bottom:8px;">
+    <div class="box c-orange" style="width:280px;">
+      <div class="name">DeDi Registry</div>
+      <div class="desc">fabric.nfh.global/registry/dedi</div>
+      <div class="desc">Subscriber Discovery · Public Key Store</div>
+    </div>
+    <div class="arr-v"><div class="vline d"></div><div class="lbl">lookup / register</div></div>
+  </div>
+
+  <!-- MIDDLE ROW: Our System ←→ Gateway ←→ Other Teams -->
+  <div class="row gap16" style="justify-content:center; align-items:stretch;">
+
+    <!-- Left: Our System -->
+    <div class="col gap10" style="width:200px;">
+      <div class="box c-blue" style="width:100%;">
+        <div class="name">React Frontend</div>
+        <div class="port">localhost:5173</div>
+        <div class="desc">Tariff Discovery UI<br>Bill Calculator<br>Filing Panel</div>
+      </div>
+      <div class="arr-v"><div class="vline d"></div><div class="vline u" style="margin-top:4px;"></div></div>
+      <div class="box c-blue" style="width:100%;">
+        <div class="name">FastAPI Backend</div>
+        <div class="port">localhost:9000</div>
+        <div class="desc">BAP + BPP + Callback<br>Ed25519 Signing</div>
+      </div>
+    </div>
+
+    <!-- Arrow left -->
+    <div class="arr" style="width:80px;">
+      <div class="line both"></div>
+      <div class="lbl">Beckn<br>select/init<br>confirm/status<br>on_* callbacks</div>
+    </div>
+
+    <!-- Center: Gateway -->
+    <div class="col" style="justify-content:center;">
+      <div class="box c-purple" style="width:180px; padding:20px;">
+        <div class="name">ies-beckn-gateway</div>
+        <div class="port">localhost:4030</div>
+        <div class="desc">Beckn Router<br>ACK + Callback</div>
+      </div>
+    </div>
+
+    <!-- Arrow right -->
+    <div class="arr" style="width:80px;">
+      <div class="line both"></div>
+      <div class="lbl">Routes to<br>target BPP<br>via ngrok</div>
+    </div>
+
+    <!-- Right: Other Teams -->
+    <div class="col gap10" style="width:200px;">
+      <div class="box c-green" style="width:100%;">
+        <div class="name">flockenergy.tech</div>
+        <div class="desc">BPP · Meter Data</div>
+      </div>
+      <div class="box c-green" style="width:100%;">
+        <div class="name">bpp.renewalytics.in</div>
+        <div class="desc">BPP · Tariff Data</div>
+      </div>
+      <div class="box c-green" style="width:100%;">
+        <div class="name">bap.gna.com</div>
+        <div class="desc">BAP · Consuming us</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom: ngrok public tunnel -->
+  <div class="col" style="align-items:center; margin-top:8px;">
+    <div class="arr-v"><div class="vline u"></div><div class="lbl">public HTTPS tunnel</div></div>
+    <div class="box c-teal" style="width:520px;">
+      <div class="name">ngrok Public Endpoint</div>
+      <div class="port">appraiser-mascot-possible.ngrok-free.dev</div>
+      <div class="desc">/bpp/receiver · /callback · /api/* · /docs</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- DIAGRAM 2: BECKN PROTOCOL FLOW                          -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="sec">2 · Beckn Protocol — E2E Flow</div>
+
+  <div class="step-row">
+    <div class="step-item" style="border-color:#58a6ff;">
+      <h4 style="color:#58a6ff;">① DISCOVER</h4>
+      <p>DeDi registry pe<br>subscriber_id se<br>BPP URL dhundho</p>
+      <div style="margin-top:8px;font-family:monospace;font-size:9px;color:#484f58;">GET /registry/dedi/lookup</div>
+    </div>
+    <div class="step-sep">→</div>
+    <div class="step-item" style="border-color:#3fb950;">
+      <h4 style="color:#3fb950;">② SELECT</h4>
+      <p>BPP se catalog<br>maango — kaunse<br>datasets available</p>
+      <div style="margin-top:8px;font-family:monospace;font-size:9px;color:#484f58;">POST /bpp/receiver/select<br>← on_select (catalog)</div>
+    </div>
+    <div class="step-sep">→</div>
+    <div class="step-item" style="border-color:#bc8cff;">
+      <h4 style="color:#bc8cff;">③ INIT</h4>
+      <p>Contract shuru karo.<br>BPP draft contract<br>activate karta hai</p>
+      <div style="margin-top:8px;font-family:monospace;font-size:9px;color:#484f58;">POST /bpp/receiver/init<br>← on_init (ACTIVE)</div>
+    </div>
+    <div class="step-sep">→</div>
+    <div class="step-item" style="border-color:#f0883e;">
+      <h4 style="color:#f0883e;">④ CONFIRM</h4>
+      <p>Deal pakki. BPP actual<br>data attach karta hai<br>dataPayload mein</p>
+      <div style="margin-top:8px;font-family:monospace;font-size:9px;color:#484f58;">POST /bpp/receiver/confirm<br>← on_confirm (data)</div>
+    </div>
+    <div class="step-sep">→</div>
+    <div class="step-item" style="border-color:#14a3a3;">
+      <h4 style="color:#14a3a3;">⑤ STATUS</h4>
+      <p>Full dataset fetch.<br>Complete payload<br>+ receipt milta hai</p>
+      <div style="margin-top:8px;font-family:monospace;font-size:9px;color:#484f58;">POST /bpp/receiver/status<br>← on_status (full)</div>
+    </div>
+  </div>
+
+  <!-- Actual message flow -->
+  <div style="background:#161b22;border-radius:8px;padding:16px;margin-top:4px;">
+    <div style="font-size:10px;color:#484f58;margin-bottom:10px;letter-spacing:1px;text-transform:uppercase;">Actual Request Path</div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <span style="background:#0d1f38;color:#58a6ff;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;">React UI</span>
+      <span style="color:#484f58;font-size:11px;">→ API call →</span>
+      <span style="background:#0d1f38;color:#58a6ff;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;">FastAPI :9000</span>
+      <span style="color:#484f58;font-size:11px;">→ Ed25519 sign →</span>
+      <span style="background:#1a0d38;color:#bc8cff;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;">gateway :4030</span>
+      <span style="color:#484f58;font-size:11px;">→ POST →</span>
+      <span style="background:#0d2f0d;color:#3fb950;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;">BPP ngrok</span>
+      <span style="color:#484f58;font-size:11px;">→ on_* callback →</span>
+      <span style="background:#0d1f38;color:#58a6ff;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;">POST /callback</span>
+      <span style="color:#484f58;font-size:11px;">→ asyncio.Event →</span>
+      <span style="background:#0d1f38;color:#58a6ff;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;">React Result</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- DIAGRAM 3: USE CASES                                     -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="sec">3 · Use Cases — What We Built</div>
+  <div class="uc-row">
+
+    <!-- Consume Tariff -->
+    <div class="uc-item" style="background:#0d1f38;border:1px solid #1f6feb;">
+      <h4 style="color:#58a6ff;">Consume Tariff</h4>
+      <div style="font-size:9px;color:#484f58;margin-bottom:8px;letter-spacing:1px;">BAP ROLE</div>
+      <ul>
+        <li>DeDi se BPP URL dhundha</li>
+        <li>select→init→confirm→status</li>
+        <li>Policies fetch kiye</li>
+        <li>Bill calculate kiya</li>
+        <li>flockenergy + renewalytics</li>
+      </ul>
+      <div style="margin-top:10px;">
+        <span class="badge badge-green">DONE</span>
+      </div>
+    </div>
+
+    <!-- Create Tariff -->
+    <div class="uc-item" style="background:#0d2f0d;border:1px solid #238636;">
+      <h4 style="color:#3fb950;">Create Tariff</h4>
+      <div style="font-size:9px;color:#484f58;margin-bottom:8px;letter-spacing:1px;">BPP ROLE</div>
+      <ul>
+        <li>7 policies serve kiye</li>
+        <li>Karnataka KERC FY25-26</li>
+        <li>Punjab PSERC FY25-26</li>
+        <li>3+ teams ne fetch kiya</li>
+        <li>Policy Generator UI</li>
+      </ul>
+      <div style="margin-top:10px;">
+        <span class="badge badge-green">DONE</span>
+      </div>
+    </div>
+
+    <!-- Create Filing -->
+    <div class="uc-item" style="background:#1a0d38;border:1px solid #6e40c9;">
+      <h4 style="color:#bc8cff;">Create Filing</h4>
+      <div style="font-size:9px;color:#484f58;margin-bottom:8px;letter-spacing:1px;">DISCOM ROLE</div>
+      <ul>
+        <li>ARR filing load kiya</li>
+        <li>SHA-256 hash compute</li>
+        <li>Beckn se SERC ko bheja</li>
+        <li>Receipt receive kiya</li>
+        <li>2 filings ready</li>
+      </ul>
+      <div style="margin-top:10px;">
+        <span class="badge badge-green">DONE</span>
+      </div>
+    </div>
+
+    <!-- Consume Filing -->
+    <div class="uc-item" style="background:#2a1500;border:1px solid #d04f00;">
+      <h4 style="color:#f0883e;">Consume Filing</h4>
+      <div style="font-size:9px;color:#484f58;margin-bottom:8px;letter-spacing:1px;">SERC ROLE</div>
+      <ul>
+        <li>Filing receive kiya</li>
+        <li>SHA-256 hash verify</li>
+        <li>ACCEPTED / REJECTED</li>
+        <li>Receipt wapas bheja</li>
+        <li>Real-time UI monitor</li>
+      </ul>
+      <div style="margin-top:10px;">
+        <span class="badge badge-green">DONE</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- DIAGRAM 4: DATA SCHEMA                                   -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="sec">4 · Data Schema — Tariff Intelligence</div>
+
+  <div class="row gap24" style="justify-content:center;align-items:flex-start;margin-top:10px;">
+
+    <!-- PROGRAM -->
+    <div class="col gap10" style="width:220px;">
+      <div class="box c-orange" style="width:100%;">
+        <div class="name">PROGRAM</div>
+        <div class="desc">Scheme identifier</div>
+      </div>
+      <div style="background:#161b22;border-radius:6px;padding:12px;width:100%;font-size:10px;color:#8b949e;line-height:2;">
+        id: prog-punjab-ds-...<br>
+        programName: "Punjab DS"<br>
+        <span style="color:#f0883e;">programDescriptions[]</span>
+      </div>
+    </div>
+
+    <div class="arr" style="width:50px;align-self:center;">
+      <div class="line r"></div>
+      <div class="lbl">1:N</div>
+    </div>
+
+    <!-- POLICY -->
+    <div class="col gap10" style="width:220px;">
+      <div class="box c-blue" style="width:100%;">
+        <div class="name">POLICY</div>
+        <div class="desc">Rate card</div>
+      </div>
+      <div style="background:#161b22;border-radius:6px;padding:12px;width:100%;font-size:10px;color:#8b949e;line-height:2;">
+        policyID: "DS-DS-1"<br>
+        policyName: "Punjab ≤2kW"<br>
+        programID: <span style="color:#f0883e;">→ PROGRAM</span><br>
+        policyType: "TARIFF"
+      </div>
+    </div>
+
+    <div class="arr" style="width:50px;align-self:center;">
+      <div class="line r"></div>
+      <div class="lbl">1:N</div>
+    </div>
+
+    <!-- ENERGY SLABS -->
+    <div class="col gap10" style="width:220px;">
+      <div class="box c-green" style="width:100%;">
+        <div class="name">energySlabs[ ]</div>
+        <div class="desc">Rate per kWh</div>
+      </div>
+      <div style="background:#161b22;border-radius:6px;padding:12px;width:100%;font-size:10px;color:#8b949e;line-height:2;">
+        id: "s1"<br>
+        start: 0 · end: 300<br>
+        price: <span style="color:#3fb950;">5.4</span> ₹/kWh<br>
+        @type: "EnergySlab"
+      </div>
+    </div>
+
+    <div class="arr" style="width:50px;align-self:center;"></div>
+
+    <!-- SURCHARGE -->
+    <div class="col gap10" style="width:220px;">
+      <div class="box c-purple" style="width:100%;">
+        <div class="name">surchargeTariffs[ ]</div>
+        <div class="desc">ToD adjustments</div>
+      </div>
+      <div style="background:#161b22;border-radius:6px;padding:12px;width:100%;font-size:10px;color:#8b949e;line-height:2;">
+        id: "peak-surcharge"<br>
+        value: <span style="color:#bc8cff;">+2.0</span> ₹/kWh<br>
+        interval: T06:00Z/PT4H<br>
+        unit: "INR_PER_KWH"
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bill formula -->
+  <div style="background:#161b22;border-radius:8px;padding:16px;margin-top:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="font-size:11px;color:#8b949e;">Bill Calculation:</div>
+    <div style="font-family:monospace;font-size:11px;color:#3fb950;">Base = Σ (units_in_slab × slab.price)</div>
+    <div style="color:#484f58;">+</div>
+    <div style="font-family:monospace;font-size:11px;color:#bc8cff;">Surcharge = base × % OR units × ₹/kWh</div>
+    <div style="color:#484f58;">=</div>
+    <div style="font-family:monospace;font-size:11px;color:#58a6ff;">Total Bill</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- DIAGRAM 5: CROSS-TEAM                                    -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="sec">5 · Cross-Team Integration — Live Results</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px;">
+
+    <!-- Left: Teams using our BPP -->
+    <div>
+      <div style="font-size:11px;color:#484f58;margin-bottom:12px;letter-spacing:1px;">TEAMS CONSUMING OUR BPP</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#161b22;border-radius:8px;padding:14px;border-left:3px solid #3fb950;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#c9d1d9;">flockenergy.tech</div>
+            <div style="font-size:11px;color:#8b949e;margin-top:2px;">5 requests · Full Beckn flow</div>
+          </div>
+          <span class="badge badge-green">ACK ✓</span>
+        </div>
+        <div style="background:#161b22;border-radius:8px;padding:14px;border-left:3px solid #3fb950;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#c9d1d9;">bap.gna.com</div>
+            <div style="font-size:11px;color:#8b949e;margin-top:2px;">Fetching tariff policies</div>
+          </div>
+          <span class="badge badge-green">ACK ✓</span>
+        </div>
+        <div style="background:#161b22;border-radius:8px;padding:14px;border-left:3px solid #3fb950;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#c9d1d9;">bpp.renewalytics.in</div>
+            <div style="font-size:11px;color:#8b949e;margin-top:2px;">Connected, exploring</div>
+          </div>
+          <span class="badge badge-blue">Connected</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Our BPP info -->
+    <div>
+      <div style="font-size:11px;color:#484f58;margin-bottom:12px;letter-spacing:1px;">OUR BPP — WHAT WE SERVE</div>
+      <div style="background:#161b22;border-radius:8px;padding:16px;">
+        <div style="font-family:monospace;font-size:11px;color:#3fb950;margin-bottom:12px;word-break:break-all;">
+          https://appraiser-mascot-possible.ngrok-free.dev/bpp/receiver
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:#0d1117;border-radius:6px;padding:10px;font-size:11px;">
+            <div style="color:#58a6ff;font-weight:600;">KA-LT2A</div>
+            <div style="color:#8b949e;margin-top:2px;">Karnataka Standard</div>
+          </div>
+          <div style="background:#0d1117;border-radius:6px;padding:10px;font-size:11px;">
+            <div style="color:#58a6ff;font-weight:600;">KA-LT2B</div>
+            <div style="color:#8b949e;margin-top:2px;">Karnataka BPL</div>
+          </div>
+          <div style="background:#0d1117;border-radius:6px;padding:10px;font-size:11px;">
+            <div style="color:#3fb950;font-weight:600;">DS-DS-1/2/3</div>
+            <div style="color:#8b949e;margin-top:2px;">Punjab PSERC</div>
+          </div>
+          <div style="background:#0d1117;border-radius:6px;padding:10px;font-size:11px;">
+            <div style="color:#bc8cff;font-weight:600;">RES-T1, COM-TOU1</div>
+            <div style="color:#8b949e;margin-top:2px;">Standard Policies</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#484f58;">subscriber_id: bpp.example.com · Ed25519 signed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                   -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div style="text-align:center;padding:20px 0;font-size:11px;color:#484f58;">
+  IES Bootcamp 2026 · Python FastAPI · React · Beckn DDM v2.0 · Ed25519 · nfh.global/testnet-deg
+</div>
+
+</div>
+</body>
+</html>

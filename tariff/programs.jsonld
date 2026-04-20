@@ -1,0 +1,62 @@
+[
+  {
+    "@context": "../specs/context.jsonld",
+    "id": "mera-shehar-res-001",
+    "objectType": "PROGRAM",
+    "@type": "PROGRAM",
+    "createdDateTime": "2024-04-10T10:00:00Z",
+    "modificationDateTime": "2024-04-10T10:00:00Z",
+    "programName": "MeraShehar Residential",
+    "programDescriptions": [
+      "Residential tariff program for MeraShehar municipality."
+    ]
+  },
+  {
+    "@context": "../specs/context.jsonld",
+    "id": "mera-shehar-com-001",
+    "objectType": "PROGRAM",
+    "@type": "PROGRAM",
+    "createdDateTime": "2024-04-10T10:00:00Z",
+    "modificationDateTime": "2024-04-10T10:00:00Z",
+    "programName": "MeraShehar Commercial",
+    "programDescriptions": [
+      "Commercial tariff program for MeraShehar business district."
+    ]
+  },
+  {
+    "@context": "../specs/context.jsonld",
+    "id": "prog-punjab-ds-fy202526",
+    "objectType": "PROGRAM",
+    "@type": "PROGRAM",
+    "createdDateTime": "2026-04-14T08:32:33Z",
+    "modificationDateTime": "2026-04-14T08:32:33Z",
+    "programName": "Punjab Domestic Supply FY2025-26",
+    "programDescriptions": [
+      "Domestic Supply tariff program for Punjab, PSERC Tariff Order FY 2025-26."
+    ]
+  },
+  {
+    "@context": "../specs/context.jsonld",
+    "id": "prog-karnataka-dom-fy202526",
+    "objectType": "PROGRAM",
+    "@type": "PROGRAM",
+    "createdDateTime": "2026-04-16T00:00:00Z",
+    "modificationDateTime": "2026-04-16T00:00:00Z",
+    "programName": "Karnataka Domestic Supply FY2025-26",
+    "programDescriptions": [
+      "LT-2 Domestic tariff program for Karnataka, KERC Tariff Order FY 2025-26."
+    ]
+  },
+  {
+    "@context": "../specs/context.jsonld",
+    "id": "prog-maharashtra-dom-fy202526",
+    "objectType": "PROGRAM",
+    "@type": "PROGRAM",
+    "createdDateTime": "2026-04-16T11:05:52Z",
+    "modificationDateTime": "2026-04-16T11:05:52Z",
+    "programName": "Maharashtra Domestic MERC FY2025-26",
+    "programDescriptions": [
+      "Domestic tariff program for Maharashtra, MERC Tariff Order FY 2025-26."
+    ]
+  }
+]

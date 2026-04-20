@@ -1,17 +1,20 @@
 """
 Beckn Ed25519 request signing.
-Keys from ONIX BAP config (local-simple-bap.yaml).
+Keys loaded from backend/.env — never hardcode secrets in source.
 """
 import base64
 import hashlib
 import json
+import os
 import time
 from nacl.signing import SigningKey
+from dotenv import load_dotenv
 
-# Keys from config/local-simple-bap.yaml
-SUBSCRIBER_ID = "bap.example.com"
-KEY_ID        = "76EU7LZ7gfqj13dWDKR1Uitnim11mCoxWBPdzLxUpAMBPVdANKgyFM"
-PRIVATE_KEY_B64 = "TTQMAEy0xJcoRXRNofZAwZq1c3VH6j98UUaHP7budQQ="
+load_dotenv()
+
+SUBSCRIBER_ID   = os.getenv("BECKN_SUBSCRIBER_ID", "bap.example.com")
+KEY_ID          = os.getenv("BECKN_KEY_ID", "")
+PRIVATE_KEY_B64 = os.getenv("BECKN_PRIVATE_KEY", "")
 
 _signing_key = SigningKey(base64.b64decode(PRIVATE_KEY_B64))
 

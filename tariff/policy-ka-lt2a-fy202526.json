@@ -1,0 +1,76 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+  "id": "policy-ka-lt2a-fy202526",
+  "objectType": "POLICY",
+  "@type": "POLICY",
+  "createdDateTime": "2026-04-16T00:00:00Z",
+  "modificationDateTime": "2026-04-16T00:00:00Z",
+  "programID": "prog-karnataka-dom-fy202526",
+  "policyID": "KA-LT2A",
+  "policyName": "Karnataka Domestic LT-2A (<=500 units) FY2025-26",
+  "policyType": "TARIFF",
+  "samplingInterval": "R/2025-04-01T00:00:00Z/P1M",
+  "energySlabs": [
+    {
+      "id": "s1",
+      "start": 0,
+      "end": 50,
+      "price": 3.65,
+      "@type": "EnergySlab"
+    },
+    {
+      "id": "s2",
+      "start": 51,
+      "end": 100,
+      "price": 5.65,
+      "@type": "EnergySlab"
+    },
+    {
+      "id": "s3",
+      "start": 101,
+      "end": 200,
+      "price": 7.60,
+      "@type": "EnergySlab"
+    },
+    {
+      "id": "s4",
+      "start": 201,
+      "end": 500,
+      "price": 8.60,
+      "@type": "EnergySlab"
+    },
+    {
+      "id": "s5",
+      "start": 501,
+      "end": null,
+      "price": 9.00,
+      "@type": "EnergySlab"
+    }
+  ],
+  "surchargeTariffs": [
+    {
+      "id": "fuel-cost-adjustment",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1M",
+      "interval": { "start": "T00:00:00Z", "duration": "PT24H" },
+      "value": 0.20,
+      "unit": "INR_PER_KWH"
+    },
+    {
+      "id": "peak-surcharge",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1D",
+      "interval": { "start": "T18:00:00Z", "duration": "PT4H" },
+      "value": 1.50,
+      "unit": "INR_PER_KWH"
+    },
+    {
+      "id": "night-rebate",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1D",
+      "interval": { "start": "T22:00:00Z", "duration": "PT7H" },
+      "value": -10,
+      "unit": "PERCENT"
+    }
+  ]
+}

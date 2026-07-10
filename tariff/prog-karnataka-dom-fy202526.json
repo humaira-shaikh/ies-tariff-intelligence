@@ -1,0 +1,12 @@
+{
+  "@context": "../specs/context.jsonld",
+  "id": "prog-karnataka-dom-fy202526",
+  "objectType": "PROGRAM",
+  "@type": "PROGRAM",
+  "createdDateTime": "2026-04-16T00:00:00Z",
+  "modificationDateTime": "2026-04-16T00:00:00Z",
+  "programName": "Karnataka Domestic Supply FY2025-26",
+  "programDescriptions": [
+    "LT-2 Domestic tariff program for Karnataka, KERC Tariff Order FY 2025-26."
+  ]
+}

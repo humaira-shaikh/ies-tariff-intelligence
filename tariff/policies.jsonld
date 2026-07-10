@@ -1,0 +1,1105 @@
+[
+  {
+    "@context": "../specs/context.jsonld",
+    "id": "policy-res-telescopic-001",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2024-04-10T11:00:00Z",
+    "modificationDateTime": "2024-04-10T11:00:00Z",
+    "programID": "mera-shehar-res-001",
+    "policyID": "RES-T1",
+    "policyName": "Residential Telescopic Standard",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2024-04-10T00:00:00Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 100,
+        "price": 4.5,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 101,
+        "end": 300,
+        "price": 7.5,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 301,
+        "end": null,
+        "price": 10.5,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "night-discount",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T23:00:00Z",
+          "duration": "PT6H"
+        },
+        "value": -10,
+        "unit": "PERCENT"
+      }
+    ],
+    "consumerType": "DOMESTIC",
+    "isBPL": false
+  },
+  {
+    "@context": "../specs/context.jsonld",
+    "id": "policy-com-tou-001",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2024-04-10T11:00:00Z",
+    "modificationDateTime": "2024-04-10T11:00:00Z",
+    "programID": "mera-shehar-com-001",
+    "policyID": "COM-TOU1",
+    "policyName": "Commercial ToD Standard",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2024-04-10T00:00:00Z/P1M",
+    "energySlabs": [
+      {
+        "id": "fixed-base",
+        "start": 0,
+        "end": null,
+        "price": 8.5,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "evening-peak",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T18:00:00Z",
+          "duration": "PT4H"
+        },
+        "value": 1.5,
+        "unit": "INR_PER_KWH"
+      }
+    ],
+    "consumerType": "COMMERCIAL",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-ds-ds-1-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-04-16T09:13:38Z",
+    "modificationDateTime": "2026-04-16T09:13:38Z",
+    "programID": "prog-punjab-ds-fy202526",
+    "policyID": "DS-DS-1",
+    "policyName": "Punjab Domestic Supply DS <=2kW FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-04-16T09:13:38Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 300,
+        "price": 5.4,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 301,
+        "end": null,
+        "price": 7.75,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "electricityDuty",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 10,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "wheelingCharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 5,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "infraSurcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 6,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "fixedCharge-DS-1",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 40,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "peak-surcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T06:00:00Z",
+          "duration": "PT4H"
+        },
+        "value": 2,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "off-peak-rebate",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T22:00:00Z",
+          "duration": "PT8H"
+        },
+        "value": -1,
+        "unit": "INR_PER_KWH"
+      }
+    ],
+    "consumerType": "DOMESTIC",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-ds-ds-2-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-04-16T09:13:38Z",
+    "modificationDateTime": "2026-04-16T09:13:38Z",
+    "programID": "prog-punjab-ds-fy202526",
+    "policyID": "DS-DS-2",
+    "policyName": "Punjab Domestic Supply DS >2-7kW FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-04-16T09:13:38Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 300,
+        "price": 5.72,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 301,
+        "end": null,
+        "price": 7.75,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "electricityDuty",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 10,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "wheelingCharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 5,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "infraSurcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 6,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "fixedCharge-DS-2",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 60,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "peak-surcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T06:00:00Z",
+          "duration": "PT4H"
+        },
+        "value": 2,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "off-peak-rebate",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T22:00:00Z",
+          "duration": "PT8H"
+        },
+        "value": -1,
+        "unit": "INR_PER_KWH"
+      }
+    ],
+    "consumerType": "DOMESTIC",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-ds-ds-3-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-04-16T09:13:38Z",
+    "modificationDateTime": "2026-04-16T09:13:38Z",
+    "programID": "prog-punjab-ds-fy202526",
+    "policyID": "DS-DS-3",
+    "policyName": "Punjab Domestic Supply DS >7-20kW FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-04-16T09:13:38Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 300,
+        "price": 6.44,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 301,
+        "end": null,
+        "price": 7.75,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "electricityDuty",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 10,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "wheelingCharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 5,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "infraSurcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 6,
+        "unit": "PERCENT"
+      },
+      {
+        "id": "fixedCharge-DS-3",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 80,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "peak-surcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T06:00:00Z",
+          "duration": "PT4H"
+        },
+        "value": 2,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "off-peak-rebate",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T22:00:00Z",
+          "duration": "PT8H"
+        },
+        "value": -1,
+        "unit": "INR_PER_KWH"
+      }
+    ],
+    "consumerType": "DOMESTIC",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-ka-lt2a-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-04-16T00:00:00Z",
+    "modificationDateTime": "2026-04-16T00:00:00Z",
+    "programID": "prog-karnataka-dom-fy202526",
+    "policyID": "KA-LT2A",
+    "policyName": "Karnataka Domestic LT-2A (<=500 units) FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2025-04-01T00:00:00Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 50,
+        "price": 3.65,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 51,
+        "end": 100,
+        "price": 5.65,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 101,
+        "end": 200,
+        "price": 7.6,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s4",
+        "start": 201,
+        "end": 500,
+        "price": 8.6,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s5",
+        "start": 501,
+        "end": null,
+        "price": 9.0,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "fuel-cost-adjustment",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 0.2,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "peak-surcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T18:00:00Z",
+          "duration": "PT4H"
+        },
+        "value": 1.5,
+        "unit": "INR_PER_KWH"
+      },
+      {
+        "id": "night-rebate",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1D",
+        "interval": {
+          "start": "T22:00:00Z",
+          "duration": "PT7H"
+        },
+        "value": -10,
+        "unit": "PERCENT"
+      }
+    ],
+    "consumerType": "DOMESTIC",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-ka-lt2b-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-04-16T00:00:00Z",
+    "modificationDateTime": "2026-04-16T00:00:00Z",
+    "programID": "prog-karnataka-dom-fy202526",
+    "policyID": "KA-LT2B",
+    "policyName": "Karnataka Domestic LT-2B BPL (Free upto 30 units) FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2025-04-01T00:00:00Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 30,
+        "price": 0.0,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 31,
+        "end": 100,
+        "price": 3.65,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 101,
+        "end": null,
+        "price": 5.65,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "fuel-cost-adjustment",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 0.2,
+        "unit": "INR_PER_KWH"
+      }
+    ],
+    "consumerType": "DOMESTIC",
+    "isBPL": true
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh_dom_1-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-04-16T11:05:52Z",
+    "modificationDateTime": "2026-04-16T11:05:52Z",
+    "programID": "prog-maharashtra-dom-fy202526",
+    "policyID": "MH-DOM-1",
+    "policyName": "Maharashtra Domestic Standard FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-04-16T11:05:52Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0.0,
+        "end": 100.0,
+        "price": 3.82,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 101.0,
+        "end": 300.0,
+        "price": 6.05,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 301.0,
+        "end": null,
+        "price": 8.1,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [
+      {
+        "id": "fuel-surcharge",
+        "@type": "SurchargeTariff",
+        "recurrence": "P1M",
+        "interval": {
+          "start": "T00:00:00Z",
+          "duration": "PT24H"
+        },
+        "value": 8.0,
+        "unit": "PERCENT"
+      }
+    ],
+    "consumerType": "DOMESTIC",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-ka_dom_2-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-04-20T07:05:40Z",
+    "modificationDateTime": "2026-04-20T07:05:40Z",
+    "programID": "prog-karnataka-dom-fy202526",
+    "policyID": "KA-DOM-2",
+    "policyName": "Karnataka domestic premium FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-04-20T07:05:40Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0.0,
+        "end": 100.0,
+        "price": 4.0,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 101.0,
+        "end": 300.0,
+        "price": 6.5,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 301.0,
+        "end": null,
+        "price": 9.0,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "consumerType": "DOMESTIC",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-ka_01-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-12T07:30:34Z",
+    "modificationDateTime": "2026-05-12T07:30:34Z",
+    "programID": "prog-karnataka-ind-fy202526",
+    "policyID": "KA-01",
+    "policyName": "Karnataka Industrials ",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-12T07:30:34Z/P1M",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0.0,
+        "end": 100.0,
+        "price": 3.6,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 101.0,
+        "end": 300.0,
+        "price": 4.1,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 301.0,
+        "end": null,
+        "price": 5.0,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "consumerType": "INDUSTRIAL",
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-lt1a-bpl",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-LT1A-BPL",
+    "policyName": "MSEDCL LT-I(A) Residential BPL FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "DOMESTIC",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 1.48,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": true
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-lt1b-res",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-LT1B-RES",
+    "policyName": "MSEDCL LT-I(B) Residential Non-BPL FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "DOMESTIC",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 100,
+        "price": 4.37,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 100,
+        "end": 300,
+        "price": 11.14,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 300,
+        "end": 500,
+        "price": 15.49,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s4",
+        "start": 500,
+        "end": null,
+        "price": 17.63,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-lt2a-com",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-LT2A-COM",
+    "policyName": "MSEDCL LT-II Commercial (0-20 kW) FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "COMMERCIAL",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 8.53,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-lt2b-com",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-LT2B-COM",
+    "policyName": "MSEDCL LT-II Commercial (>20-50 kW) FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "COMMERCIAL",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 13.1,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-lt4b-agr",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-LT4B-AGR",
+    "policyName": "MSEDCL LT-IV(B) Agriculture Metered Pumpsets FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "AGRICULTURAL",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 3.14,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-lt5b-ind",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-LT5B-IND",
+    "policyName": "MSEDCL LT-V(B) Industry General (0-20 kW) FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "INDUSTRIAL",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 7.1,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-ht1-ind",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-HT1-IND",
+    "policyName": "MSEDCL HT-I Industry FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "INDUSTRIAL",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 8.71,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-ht2-com",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-HT2-COM",
+    "policyName": "MSEDCL HT-II Commercial FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "COMMERCIAL",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 14.03,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-lt8-ev",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-05-19T07:43:22Z",
+    "modificationDateTime": "2026-05-19T07:43:22Z",
+    "programID": "prog-maharashtra-msedcl-fy202526",
+    "policyID": "MH-LT8-EV",
+    "policyName": "MSEDCL LT-VIII EV Charging Station FY2025-26",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-05-19T07:43:22Z/P1M",
+    "source": "MERC_MYT_ORDER_217_OF_2024",
+    "consumerType": "DOMESTIC",
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 9.86,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "isBPL": false
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-pdf-00-fy202021",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-06-08T13:02:14Z",
+    "modificationDateTime": "2026-06-08T13:02:14Z",
+    "programID": "prog-maharashtra-fy202021",
+    "policyID": "MH-PDF-00-FY202021",
+    "policyName": "Maharashtra Domestic MERC FY2020-21 (PDF)",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-06-08T13:02:14Z/P1M",
+    "source": "PDF_UPLOAD",
+    "fileName": "RE-Generic-Tariff-Order-77-of-2020-1.pdf",
+    "consumerType": "DOMESTIC",
+    "energySlabs": [],
+    "surchargeTariffs": []
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-mh-pdf-00-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-06-08T13:19:16Z",
+    "modificationDateTime": "2026-06-08T13:19:16Z",
+    "programID": "prog-maharashtra-fy202526",
+    "policyID": "MH-PDF-00-FY202526",
+    "policyName": "Maharashtra Domestic MERC FY2025-26 (PDF)",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-06-08T13:19:16Z/P1M",
+    "source": "PDF_UPLOAD",
+    "fileName": "Combined-Order-in-6-Cases-Case-No.-230231232233154174-of-2025.pdf",
+    "consumerType": "DOMESTIC",
+    "energySlabs": [],
+    "surchargeTariffs": []
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-xx-pdf-00-fy202526",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-06-08T13:35:25Z",
+    "modificationDateTime": "2026-06-08T13:35:25Z",
+    "programID": "prog-unknown-fy202526",
+    "policyID": "XX-PDF-00-FY202526",
+    "policyName": "Unknown Domestic SERC FY2025-26 (PDF)",
+    "policyType": "TARIFF",
+    "samplingInterval": "R/2026-06-08T13:35:25Z/P1M",
+    "source": "PDF_UPLOAD",
+    "fileName": "ARR-filing data.pdf",
+    "consumerType": "DOMESTIC",
+    "energySlabs": [],
+    "surchargeTariffs": []
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-pb-ds1-dom",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-06-08T13:43:28Z",
+    "modificationDateTime": "2026-06-08T13:43:28Z",
+    "programID": "prog-punjab-pspcl-fy202425",
+    "source": "PSPCL_SCHEDULE_FY2024-25",
+    "policyID": "PB-DS1-DOM",
+    "policyName": "Punjab PSPCL Domestic Supply (DS) Load <=2kW FY2024-25",
+    "consumerType": "DOMESTIC",
+    "isBPL": false,
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 100,
+        "price": 4.29,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 100,
+        "end": 300,
+        "price": 6.76,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 300,
+        "end": null,
+        "price": 7.75,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "policyType": "TARIFF"
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-pb-ds2-dom",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-06-08T13:43:28Z",
+    "modificationDateTime": "2026-06-08T13:43:28Z",
+    "programID": "prog-punjab-pspcl-fy202425",
+    "source": "PSPCL_SCHEDULE_FY2024-25",
+    "policyID": "PB-DS2-DOM",
+    "policyName": "Punjab PSPCL Domestic Supply (DS) Load 2-7kW FY2024-25",
+    "consumerType": "DOMESTIC",
+    "isBPL": false,
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 100,
+        "price": 4.54,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 100,
+        "end": 300,
+        "price": 6.76,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 300,
+        "end": null,
+        "price": 7.75,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "policyType": "TARIFF"
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-pb-nrs-com",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-06-08T13:43:28Z",
+    "modificationDateTime": "2026-06-08T13:43:28Z",
+    "programID": "prog-punjab-pspcl-fy202425",
+    "source": "PSPCL_SCHEDULE_FY2024-25",
+    "policyID": "PB-NRS-COM",
+    "policyName": "Punjab PSPCL Non-Residential Supply (NRS) Load <=7kW FY2024-25",
+    "consumerType": "COMMERCIAL",
+    "isBPL": false,
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 100,
+        "price": 6.91,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s2",
+        "start": 100,
+        "end": 500,
+        "price": 7.17,
+        "@type": "EnergySlab"
+      },
+      {
+        "id": "s3",
+        "start": 500,
+        "end": null,
+        "price": 7.75,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "policyType": "TARIFF"
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "policy-pb-si-ind",
+    "objectType": "POLICY",
+    "@type": "POLICY",
+    "createdDateTime": "2026-06-08T13:43:28Z",
+    "modificationDateTime": "2026-06-08T13:43:28Z",
+    "programID": "prog-punjab-pspcl-fy202425",
+    "source": "PSPCL_SCHEDULE_FY2024-25",
+    "policyID": "PB-SI-IND",
+    "policyName": "Punjab PSPCL Large Industry (SI) 100-1000kVA FY2024-25",
+    "consumerType": "INDUSTRIAL",
+    "isBPL": false,
+    "energySlabs": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": null,
+        "price": 6.6,
+        "@type": "EnergySlab"
+      }
+    ],
+    "surchargeTariffs": [],
+    "policyType": "TARIFF"
+  }
+]

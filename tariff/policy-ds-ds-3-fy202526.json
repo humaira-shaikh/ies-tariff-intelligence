@@ -1,0 +1,97 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+  "id": "policy-ds-ds-3-fy202526",
+  "objectType": "POLICY",
+  "@type": "POLICY",
+  "createdDateTime": "2026-04-16T09:13:38Z",
+  "modificationDateTime": "2026-04-16T09:13:38Z",
+  "programID": "prog-punjab-ds-fy202526",
+  "policyID": "DS-DS-3",
+  "policyName": "Punjab Domestic Supply DS >7-20kW FY2025-26",
+  "policyType": "TARIFF",
+  "samplingInterval": "R/2026-04-16T09:13:38Z/P1M",
+  "energySlabs": [
+    {
+      "id": "s1",
+      "start": 0,
+      "end": 300,
+      "price": 6.44,
+      "@type": "EnergySlab"
+    },
+    {
+      "id": "s2",
+      "start": 301,
+      "end": null,
+      "price": 7.75,
+      "@type": "EnergySlab"
+    }
+  ],
+  "surchargeTariffs": [
+    {
+      "id": "electricityDuty",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1M",
+      "interval": {
+        "start": "T00:00:00Z",
+        "duration": "PT24H"
+      },
+      "value": 10,
+      "unit": "PERCENT"
+    },
+    {
+      "id": "wheelingCharge",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1M",
+      "interval": {
+        "start": "T00:00:00Z",
+        "duration": "PT24H"
+      },
+      "value": 5,
+      "unit": "PERCENT"
+    },
+    {
+      "id": "infraSurcharge",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1M",
+      "interval": {
+        "start": "T00:00:00Z",
+        "duration": "PT24H"
+      },
+      "value": 6,
+      "unit": "PERCENT"
+    },
+    {
+      "id": "fixedCharge-DS-3",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1M",
+      "interval": {
+        "start": "T00:00:00Z",
+        "duration": "PT24H"
+      },
+      "value": 80,
+      "unit": "INR_PER_KWH"
+    },
+    {
+      "id": "peak-surcharge",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1D",
+      "interval": {
+        "start": "T06:00:00Z",
+        "duration": "PT4H"
+      },
+      "value": 2,
+      "unit": "INR_PER_KWH"
+    },
+    {
+      "id": "off-peak-rebate",
+      "@type": "SurchargeTariff",
+      "recurrence": "P1D",
+      "interval": {
+        "start": "T22:00:00Z",
+        "duration": "PT8H"
+      },
+      "value": -1,
+      "unit": "INR_PER_KWH"
+    }
+  ]
+}

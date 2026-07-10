@@ -1,0 +1,12 @@
+{
+  "@context": "../specs/context.jsonld",
+  "id": "prog-punjab-ds-fy202526",
+  "objectType": "PROGRAM",
+  "@type": "PROGRAM",
+  "createdDateTime": "2026-04-14T08:32:33Z",
+  "modificationDateTime": "2026-04-14T08:32:33Z",
+  "programName": "Punjab Domestic Supply FY2025-26",
+  "programDescriptions": [
+    "Domestic Supply tariff program for Punjab, PSERC Tariff Order FY 2025-26."
+  ]
+}
